@@ -3,6 +3,28 @@ const notes = require(path.resolve("src/data/notes-data"));
 const ratings = require(path.resolve("src/data/ratings-data")); // Import the ratings data
 
 
+
+
+// function getAllRatings(req, res) {
+//   console.log("reaching controller fucnction")
+//   res.json({ data: ratings });
+// }
+
+// function getRatingById(req, res) {
+//   const ratingId = Number(req.params.ratingId);
+
+//   const foundRating = ratings.find((rating) => rating.id === ratingId);
+
+//   if (foundRating) {
+//     res.json({ data: foundRating });
+//   } else {
+//     res.status(404).json({ error: `Rating id not found: ${ratingId}` });
+//   }
+// }
+
+
+
+
 function create(req, res) {
   const { data: { text } = {} } = req.body;
   const newNote = {
@@ -88,7 +110,7 @@ function getNoteRatingById(req, res) {
     const foundRating = ratings.find(
       (rating) => rating.noteId === noteId && rating.id === ratingId
     );
-    
+
     if (foundRating) {
       res.json({ data: foundRating });
     } else {
@@ -96,22 +118,6 @@ function getNoteRatingById(req, res) {
     }
   } else {
     res.status(404).json({ error: `Note id not found: ${noteId}` });
-  }
-}
-
-function getAllRatings(req, res) {
-  res.json({ data: ratings });
-}
-
-function getRatingById(req, res) {
-  const ratingId = Number(req.params.ratingId);
-
-  const foundRating = ratings.find((rating) => rating.id === ratingId);
-
-  if (foundRating) {
-    res.json({ data: foundRating });
-  } else {
-    res.status(404).json({ error: `Rating id not found: ${ratingId}` });
   }
 }
 
@@ -123,6 +129,4 @@ module.exports = {
   delete: [destroy],
   getNoteRatings,
   getNoteRatingById,
-  getAllRatings,
-  getRatingById,
 };

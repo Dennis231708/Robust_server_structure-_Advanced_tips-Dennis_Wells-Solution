@@ -14,9 +14,9 @@ router.route("/").get(controller.list).post(controller.create).all(send405Error)
 router.route("/:noteId/ratings").get(controller.getNoteRatings);
 router.route("/:noteId/ratings/:ratingId").get(controller.getNoteRatingById);
 
-// Overall ratings routes
-router.route("/ratings").get(controller.getAllRatings);
-router.route("/ratings/:ratingId").get(controller.getRatingById);
+// // Overall ratings routes
+// router.route("/ratings").get(controller.getAllRatings);
+// router.route("/ratings/:ratingId").get(controller.getRatingById);
 
 // Helper function for sending 405 error
 function send405Error(req, res) {
